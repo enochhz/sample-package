@@ -9,7 +9,7 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
-        
+
     - name: Install Poetry
       run: |
         curl -sSL https://install.python-poetry.org | python3 -
@@ -21,3 +21,9 @@ jobs:
     - name: Run tests with pytest using Poetry
       run: |
         poetry run pytest tests
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4.0.1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+

@@ -20,12 +20,13 @@ jobs:
 
     - name: Run tests with pytest using Poetry
       run: |
-        poetry run pytest tests
+        poetry run pytest --cov=./ --cov-report=xml
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4.0.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage.xml
         fail_ci_if_error: true
 
 
